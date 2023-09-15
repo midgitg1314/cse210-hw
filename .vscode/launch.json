@@ -11,7 +11,7 @@
             "program": "${workspaceFolder}/sandbox/Sandbox/bin/Debug/net7.0/Sandbox.dll",
             "args": [],
             "cwd": "${workspaceFolder}/sandbox/Sandbox",
-            "console": "integratedTerminal",
+            "console": "internalConsole",
             "internalConsoleOptions": "neverOpen",
             "stopAtEntry": false
         },
