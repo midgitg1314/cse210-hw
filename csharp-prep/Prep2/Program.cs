@@ -7,7 +7,7 @@ class Program
         string letter = "";
         string letterSign = "";
         Console.Write("What is your grade percentage (Ex. 90 or 85 or 64)? ");
-         int gradePercentage = int.Parse(Console.ReadLine());
+        int gradePercentage = int.Parse(Console.ReadLine());
 
         if (gradePercentage >= 70)
         {
