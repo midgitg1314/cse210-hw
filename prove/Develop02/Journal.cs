@@ -30,10 +30,10 @@ public class Journal
     {
         foreach (var entry in entries)
         {
-            System.Console.WriteLine($"Date: {entry.EntryDate}");
-            System.Console.WriteLine($"Prompt: {entry.Prompt}");
-            System.Console.WriteLine($"Response: {entry.Response}");
-            System.Console.WriteLine();
+            Console.WriteLine($"Date: {entry.EntryDate}");
+            Console.WriteLine($"Prompt: {entry.Prompt}");
+            Console.WriteLine($"Response: {entry.Response}");
+            Console.WriteLine();
         }
     }
 
@@ -43,7 +43,7 @@ public class Journal
         {
             foreach (var entry in entries)
             {
-                writer.WriteLine($"{entry.EntryDate.ToShortDateString()},{entry.Prompt},{entry.Response}");
+                Console.WriteLine($"{entry.EntryDate.ToShortDateString()},{entry.Prompt},{entry.Response}");
             }
         }
     }

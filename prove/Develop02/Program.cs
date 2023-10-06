@@ -108,7 +108,7 @@ class Program
                 }
                 else if (choice == 5)
                 {
-                    Console.WriteLine("Goodbye!");
+                    Console.WriteLine("Thank you!");
                 }
                 else
                 {

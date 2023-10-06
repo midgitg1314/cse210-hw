@@ -43,7 +43,7 @@ public class Entry
     {
         string journalFile = "journalFile.txt";
 
-        using (System.IO.StreamWriter outputFile = new System.IO.StreamWriter(journalFile, true)) // Use 'true' to append to the file
+        using (System.IO.StreamWriter outputFile = new System.IO.StreamWriter(journalFile, true))
         {
             outputFile.WriteLine($"Date: {EntryDate.ToShortDateString()} - Prompt: {Prompt}");
             outputFile.WriteLine($"Response: {Response}");
