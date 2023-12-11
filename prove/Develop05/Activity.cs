@@ -1,30 +1,20 @@
-class Activity
+abstract class Activity
 {
-    protected string _name;
-    protected string _description;
-    protected int _duration;
+    protected int Duration;
 
-    public Activity(string name, string description, int duration)
+    public virtual void Run()
     {
-        _name = name;
-        _description = description;
-        _duration = duration;
-    }
+        DisplayStartingMessage();
+        Thread.Sleep(3000);
 
-    public void Start()
-    {
-        Console.WriteLine($"Activity: {_name}");
-        Console.WriteLine($"Description: {_description}");
-        Console.WriteLine($"Duration: {_duration} seconds");
-        Console.WriteLine("Prepare to begin...");
+        RunActivity();
+
+        DisplayEndingMessage();
         Thread.Sleep(3000);
     }
-    
-    public void End()
-    {
-        Console.WriteLine("Good job!");
-        Console.WriteLine($"{_name} activity completed.");
-        Console.WriteLine($"Duration: {_duration} seconds");
-        Thread.Sleep(3000);
-    }
+
+    protected abstract void DisplayStartingMessage();
+    protected abstract void RunActivity();
+    protected abstract void DisplayEndingMessage();
+
 }

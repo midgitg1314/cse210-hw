@@ -5,47 +5,39 @@ class Program
 {
     static void Main(string[] args)
     {
-        // Create a menu system to allow the user to choose an activity
         int choice = DisplayMenu();
-        int duration = GetDuration();
 
-        //Create an instance of the selected activity
-        Activity activity = null;
+        Activity activity = CreateActivity(choice);
 
+        activity.Run();
+
+        Console.ReadLine();
+
+    }
+
+    static int DisplayMenu()
+    {
+        Console.WriteLine("Mindfulness Activities:");
+        Console.WriteLine("1. Breathing Activity:");
+        Console.WriteLine("2. Reflection Activity:");
+        Console.WriteLine("3. Listing Activity:");
+
+        Console.Write("Choose an activity (1-3): ");
+        return int.Parse(Console.ReadLine());
+    }
+
+    static Activity CreateActivity(int choice)
+    {
         switch (choice)
         {
             case 1:
-                activity = new BreathingActivity(duration);
-                break;
-        
+                return new BreathingActivity();
             case 2:
-                activity = new ReflectionActivity(duration);
-                break;
+                return new ReflectionActivity();
             case 3:
-                activity = new ListingActivity(duration);
-                break;
+                return new ListingActivity();
             default:
-                Console.WriteLine("Invalid choice");
-                break;
-        }
-        if (activity != null){
-            activity.Start();
-            //Run the activity
-            //End the activity
+                throw new ArgumentException("Invalid choice");
         }
     }
-        static int DisplayMenu()
-        {
-            Console.WriteLine("Choose an activity:");
-            Console.WriteLine("1. Breathing Activity");
-            Console.WriteLine("2. Reflection Activity");
-            Console.WriteLine("3. Listing Activity");
-            return int.Parse(Console.ReadLine());
-        }
-        static int GetDuration()
-        {
-            Console.Write("Enter the duration (in seconds): ");
-            return int.Parse(Console.ReadLine());
-        }
-    
 }

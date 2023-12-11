@@ -1,42 +1,40 @@
 class ListingActivity : Activity
 {
-    public ListingActivity(int duration) : base("Listing", "This activity will help you reflect on the good things in your life by listing items.", duration)
+    private string[] listPrompts = {
+        "Who are people that you appreciate?",
+        "What are personal strengths of yours?",
+        "Who are people that you have helped this week?",
+        "When have you felt the Holy Ghost this month?",
+        "Who are some of your personal heroes?"
+    };
+
+    protected override void DisplayStartingMessage()
     {
+        Console.WriteLine("Listing Activity");
+        Console.WriteLine("This Activity will help you reflect on the good things in your life by having you list as many things as you can in a certain area.");
+        Console.Write("Enter the duration in seconds: ");
+        Duration = int.Parse(Console.ReadLine());
     }
-    
-    public void Start()
+
+    protected override void RunActivity()
     {
-        base.Start();
-
-        Console.WriteLine("Let's begin the listing exercise...");
-
-        string[] prompts = new string[]
-        {
-            "Who are people that you appreciate?",
-            "What are personal strengths of yours?",
-            "Who are people that you helped this week?",
-            "When have you felt the Holy Ghost this month?",
-            "Who are some of your personal heroes?"
-        };
-
         Random random = new Random();
-        int itemCounter = 0;
+        string prompt = listPrompts[random.Next(listPrompts.Length)];
+        Console.WriteLine(prompt);
 
-        for (int i = 0; i < _duration; i++)
+        Console.WriteLine("You have {o} seconds to start listing...", Duration);
+        Thread.Sleep(3000);
+
+        Console.WriteLine("Go!");
+
+        for (int i= 0; i < Duration; i++)
         {
-            string prompt = prompts[random.Next(prompts.Length)];
-            Console.WriteLine(prompt);
-
-            for (int j = 5; j >= 1; j--)
-            {
-            Console.WriteLine($"Item {itemCounter + 1} (in {j}s):");
-                itemCounter++;
-                Thread.Sleep(1000);
-            }
+            Console.Write("Enter an item: ");
+            string item = Console.ReadLine();
         }
-
-        Console.WriteLine($"NUmber of items listed: {itemCounter}");
-
-        base.End();
+    }
+    protected override void DisplayEndingMessage()
+    {
+        Console.WriteLine("Good Job! ");
     }
 }

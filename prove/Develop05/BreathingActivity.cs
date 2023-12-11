@@ -1,19 +1,27 @@
 class BreathingActivity : Activity
 {
-    public BreathingActivity(int duration) : base("Breathing", "This activity will help you relax by walking you through breathing in and out slowly.", duration)
+    protected override void DisplayStartingMessage()
     {
+        Console.WriteLine("Breathing Activity");
+        Console.WriteLine("This activity will help you relax by walking you through breathing in and out slowly. Clear your mind and focus on your breathing.");
+        Console.Write("Enter the duration in seconds: ");
+        Duration = int.Parse(Console.ReadLine());
     }
-    public void Start()
-    {
-        base.Start();
 
-        Console.WriteLine("Let's begin the breathing exercise...");
-        
-        for (int i = 0; i < _duration; i++)
+    protected override void RunActivity()
+    {
+        for (int i=0; i < Duration; i++)
         {
-            Console.WriteLine(i % 2 == 0 ? "Breathe in..." : "Breathe out...");
+            Console.WriteLine("Breathe in...");
+            Thread.Sleep(1000);
+            Console.WriteLine("Breathe out...");
             Thread.Sleep(1000);
         }
-        base.End();
     }
+
+    protected override void DisplayEndingMessage()
+    {
+        Console.WriteLine("Good job! You have completed the Breathing Activity for {0} seconds.", Duration);
+    }
+
 }
